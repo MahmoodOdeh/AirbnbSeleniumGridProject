@@ -18,10 +18,14 @@ class BrowserWrapper:
     def get_driver(self, browser_type=None):
         if browser_type:
             if browser_type.lower() == 'chrome':
+                print("open chrome")
                 return webdriver.Chrome()
             elif browser_type.lower() == 'edge':
+                print("open edge")
                 return webdriver.Edge()
             elif browser_type.lower() == 'firefox':
+                print("open firefox")
+
                 return webdriver.Firefox()
             else:
                 return
