@@ -1,0 +1,26 @@
+name: Selenium Test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      name: Checkout code
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Setup ChromeDriver
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: latest
+
+    - name: Run Selenium Test
+      run: python test.world_page_test.py
