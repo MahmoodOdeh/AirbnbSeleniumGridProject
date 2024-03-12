@@ -22,4 +22,4 @@ jobs:
         chrome-version: latest
 
     - name: Run Selenium Test
-      run: python AirbnbSeleniumGridProject/test/world_page_test.py
+      run: python test/world_page_test.py
