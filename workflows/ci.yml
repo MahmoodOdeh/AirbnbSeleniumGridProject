@@ -15,7 +15,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install -r requirements.txt; fi
 
     - name: Setup ChromeDriver
       uses: browser-actions/setup-chrome@v1
@@ -23,4 +23,4 @@ jobs:
         chrome-version: latest
 
     - name: Run Selenium Test
-      run: python test.world_page_test.py
+      run: python test.py
