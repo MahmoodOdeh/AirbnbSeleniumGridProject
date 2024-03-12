@@ -3,10 +3,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
-
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -21,6 +20,9 @@ jobs:
       uses: browser-actions/setup-chrome@v1
       with:
         chrome-version: latest
+
+    - name: Print current directory path
+      run: echo Current directory path $(pwd)
 
     - name: Run Selenium Test
       run: python test/world_page_test.py
