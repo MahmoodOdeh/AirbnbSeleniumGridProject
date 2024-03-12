@@ -1,4 +1,4 @@
-from AirbnbSeleniumGridProject.infra.api_wrapper import APIWrapper
+from infra.api_wrapper import APIWrapper
 
 
 class Tankerkoenig:
