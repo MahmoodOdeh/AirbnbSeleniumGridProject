@@ -4,9 +4,9 @@ from unittest.mock import patch
 
 import requests
 
-from AirbnbSeleniumGridProject.infra.api_wrapper import APIWrapper
-from AirbnbSeleniumGridProject.infra.browser_wrapper import BrowserWrapper
-from AirbnbSeleniumGridProject.logic.tankerkoenig_api import Tankerkoenig
+from infra.api_wrapper import APIWrapper
+from infra.browser_wrapper import BrowserWrapper
+from logic.tankerkoenig_api import Tankerkoenig
 
 
 class TestStationData(unittest.TestCase):

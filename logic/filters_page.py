@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
-from AirbnbSeleniumGridProject.infra.base_page import BasePage
+from infra.base_page import BasePage
 
 
 class AirbnbFilterPage(BasePage):

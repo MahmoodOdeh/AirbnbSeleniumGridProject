@@ -2,9 +2,9 @@ import concurrent.futures
 import time
 import unittest
 
-from AirbnbSeleniumGridProject.infra.browser_wrapper import BrowserWrapper
-from AirbnbSeleniumGridProject.logic.airbnb_base_age import AirbnbBasePage
-from AirbnbSeleniumGridProject.logic.filters_page import AirbnbFilterPage
+from infra.browser_wrapper import BrowserWrapper
+from logic.airbnb_base_age import AirbnbBasePage
+from logic.filters_page import AirbnbFilterPage
 
 
 class AirbnbPageTest(unittest.TestCase):
