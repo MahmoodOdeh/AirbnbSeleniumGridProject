@@ -1,9 +1,10 @@
 import concurrent.futures
 import unittest
 
-from ..infra.browser_wrapper import BrowserWrapper
-from ..logic.airbnb_base_age import AirbnbBasePage
-from ..logic.world_page import AirbnbWorldPage
+from logic.world_page import AirbnbWorldPage
+from infra.browser_wrapper import BrowserWrapper
+from logic.airbnb_base_age import AirbnbBasePage
+
 
 
 class AirbnbPageTest(unittest.TestCase):
