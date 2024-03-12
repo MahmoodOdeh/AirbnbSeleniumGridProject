@@ -1,6 +1,6 @@
 import requests
 
-from infra.config_handler import ConfigHandler
+from config_handler import ConfigHandler
 
 
 class APIWrapper:

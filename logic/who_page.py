@@ -2,7 +2,7 @@ import time
 
 from selenium.webdriver.common.by import By
 
-from infra.base_page import BasePage
+from AirbnbSeleniumGridProject.infra.base_page import BasePage
 
 
 class AirbnbWhoPage(BasePage):

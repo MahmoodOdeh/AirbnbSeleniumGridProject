@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from infra.base_page import BasePage
+from AirbnbSeleniumGridProject.infra.base_page import BasePage
 
 
 class AirbnbWorldPage(BasePage):

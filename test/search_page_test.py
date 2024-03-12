@@ -2,10 +2,10 @@ import concurrent.futures
 import time
 import unittest
 
-from infra.browser_wrapper import BrowserWrapper
-from logic.airbnb_base_age import AirbnbBasePage
-from logic.search_page import AirbnbSearchPage
-from logic.who_page import AirbnbWhoPage
+from AirbnbSeleniumGridProject.infra.browser_wrapper import BrowserWrapper
+from AirbnbSeleniumGridProject.logic.airbnb_base_age import AirbnbBasePage
+from AirbnbSeleniumGridProject.logic.search_page import AirbnbSearchPage
+from AirbnbSeleniumGridProject.logic.who_page import AirbnbWhoPage
 
 
 class AirbnbPageTest(unittest.TestCase):
