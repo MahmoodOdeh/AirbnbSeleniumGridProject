@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-//                 sh 'python -m pip install --upgrade pip'
+
                 bat 'pip install -r requirements.txt'
 
             }
@@ -13,15 +13,14 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                // Add test execution steps here
+
                 bat 'python -m unittest /test/world_page_test.py'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
-//                 git 'commit -am "Deploying latest changes"'
-//                 git 'push origin main'
+
 
             }
         }
