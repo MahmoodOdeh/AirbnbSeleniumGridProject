@@ -20,7 +20,7 @@ pipeline {
                     parallel(
                         'API Test': {
                             echo 'Running API test...'
-                            bat "docker run --name tankerkoenig_stats_api_test ${IMAGE_NAME}:${TAG} tankerkoenig_stats_api_test.py"
+                            bat "docker run --name tankerkoenig_stats_api_test ${IMAGE_NAME}:${TAG} python tankerkoenig_stats_api_test.py"
                             bat "docker rm tankerkoenig_stats_api_test"
                         },
                         'Change Language': {
