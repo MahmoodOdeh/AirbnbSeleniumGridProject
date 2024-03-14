@@ -6,6 +6,7 @@ pipeline {
         IMAGE_NAME = 'tests'
         TAG = 'latest'
         INFRA_PATH = 'C:/Users/odehm/Desktop/new/AirbnbSeleniumGridProject/infra'
+        LOGIC_PATH = 'C:/Users/odehm/Desktop/new/AirbnbSeleniumGridProject/logic'
     }
 
     stages {
