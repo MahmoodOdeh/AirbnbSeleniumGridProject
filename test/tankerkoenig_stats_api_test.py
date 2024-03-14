@@ -1,9 +1,9 @@
 import unittest
 from concurrent.futures.thread import ThreadPoolExecutor
 
-from ..infra.api_wrapper import APIWrapper
-from ..infra.browser_wrapper import BrowserWrapper
-from ..logic.tankerkoenig_api import Tankerkoenig
+from infra.api_wrapper import APIWrapper
+from infra.browser_wrapper import BrowserWrapper
+from logic.tankerkoenig_api import Tankerkoenig
 
 
 class TestJsonResponseTankerkoenig(unittest.TestCase):
