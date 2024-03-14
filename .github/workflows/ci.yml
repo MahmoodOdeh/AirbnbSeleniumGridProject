@@ -30,7 +30,6 @@ jobs:
           pythonLocation: /opt/hostedtoolcache/Python/3.12.2/x64
           LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.2/x64/lib
 
-
       - name: Install Selenium
         run: |
           pip install selenium
