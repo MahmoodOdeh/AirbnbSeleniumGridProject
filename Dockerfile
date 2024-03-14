@@ -4,6 +4,9 @@ FROM python:3.12
 WORKDIR /usr/src/tests
 
 COPY . .
+COPY infra C:\Users\odehm\Desktop\new\AirbnbSeleniumGridProject\infra
+COPY logic C:\Users\odehm\Desktop\new\AirbnbSeleniumGridProject\logic
+
 
 
 RUN pip install --no-cache-dir -r requirements.txt
