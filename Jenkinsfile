@@ -21,12 +21,12 @@ pipeline {
                         'API Test': {
                             echo 'Running API test...'
                             bat "docker rm -f api_test || true"
-                            bat "docker run --name odeh ${IMAGE_NAME}:${TAG} python tankerkoenig_stats_api_test.py"
+                            bat "docker run --name odeh ${IMAGE_NAME}:${TAG} python test/tankerkoenig_stats_api_test.py"
                         },
                         'Change Language': {
                             echo 'Running change language test...'
                             bat "docker rm -f UI_test || true"
-                            bat "docker run --name UI_test ${IMAGE_NAME}:${TAG} python world_page_test.py"
+                            bat "docker run --name UI_test ${IMAGE_NAME}:${TAG} python test/world_page_test.py"
                         }
                     )
                 }
