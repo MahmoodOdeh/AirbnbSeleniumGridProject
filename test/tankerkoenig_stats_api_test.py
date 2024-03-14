@@ -2,8 +2,9 @@ import unittest
 from concurrent.futures.thread import ThreadPoolExecutor
 import sys
 
-sys.path.append('/usr/src/tests/infra')
-sys.path.append('/usr/src/tests/logic')
+sys.path.append(r'AirbnbSeleniumGridProject\infra')
+sys.path.append(r'AirbnbSeleniumGridProject\logic')
+
 
 
 from infra.api_wrapper import APIWrapper
