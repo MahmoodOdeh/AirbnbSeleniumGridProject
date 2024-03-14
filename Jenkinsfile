@@ -28,7 +28,7 @@ pipeline {
                         'Change Language': {
                             echo 'Running change language test...'
                             bat "docker rm -f UI_test || true"
-                            bat "docker run --name UI_test ${IMAGE_NAME}:${TAG} python test/world_page_test.py"
+                            bat "docker run --name UI_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${INFRA_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${LOGIC_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py"
                         }
                     )
                 }
