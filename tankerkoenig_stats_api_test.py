@@ -1,6 +1,7 @@
 import unittest
 from concurrent.futures.thread import ThreadPoolExecutor
 import sys
+
 sys.path.append('C:\Users\odehm\Desktop\new\AirbnbSeleniumGridProject\infra')
 sys.path.append('C:\Users\odehm\Desktop\new\AirbnbSeleniumGridProject\logic')
 
@@ -76,7 +77,3 @@ class TestJsonResponseTankerkoenig(unittest.TestCase):
                 executor.map(self.test_unique_timestamps, self.browser.browser_types)
         else:
             self.test_unique_timestamps(self.browser.default_browser.lower())
-
-
-
-
