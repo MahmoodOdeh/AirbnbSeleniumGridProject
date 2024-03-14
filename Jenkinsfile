@@ -7,7 +7,7 @@ pipeline {
         TAG = 'latest'
     }
 
-
+    stages {
         stage('Run Tests in Parallel') {
             steps {
                 script {
@@ -29,7 +29,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up...'
-//             bat "docker rmi ${IMAGE_NAME}:${TAG}"
+            // bat "docker rmi ${IMAGE_NAME}:${TAG}"
         }
     }
 }
