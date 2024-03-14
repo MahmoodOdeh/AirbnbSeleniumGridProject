@@ -21,7 +21,7 @@ pipeline {
                         'API Test': {
                             echo 'Running API test...'
                             bat "docker rm -f api_test || true"
-                            bat "docker run --name aram ${IMAGE_NAME}:${TAG} python tankerkoenig_stats_api_test.py"
+                            bat "docker run --name saeed ${IMAGE_NAME}:${TAG} python tankerkoenig_stats_api_test.py"
                         },
                         'Change Language': {
                             echo 'Running change language test...'
