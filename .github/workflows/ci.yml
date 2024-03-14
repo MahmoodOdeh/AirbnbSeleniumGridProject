@@ -25,4 +25,5 @@ jobs:
       run: echo Current directory path $(pwd)
 
     - name: Run Selenium Test
-      run: python test/world_page_test.py
+      run: |
+        docker run --name api_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${{ github.workspace }}/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${{ github.workspace }}/logic:/usr/src/tests/AirbnbSeleniumGridProject/logic tests:latest python test/world_page_test.py
