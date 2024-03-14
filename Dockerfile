@@ -4,9 +4,6 @@ FROM python:3.12
 WORKDIR /usr/src/tests
 
 COPY . .
-COPY Utils/configurations.py Utils/configurations.py
-COPY Utils/users.py Utils/users.py
-COPY Utils/generate_string.py Utils/generate_string.py
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install unzip
