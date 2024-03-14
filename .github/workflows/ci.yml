@@ -1,5 +1,6 @@
 name: Selenium Test
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,4 +37,4 @@ jobs:
           -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra \
           -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/logic:/usr/src/tests/AirbnbSeleniumGridProject/logic \
           -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/test:/usr/src/tests/AirbnbSeleniumGridProject/test \
-          your_custom_docker_image python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
+          tests python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
