@@ -18,11 +18,20 @@ pipeline {
 
         stage('Run API Test') {
             steps {
-                bat "docker run --name api_test_runner ${IMAGE_NAME}:${TAG} python world_page_test.py"
-                bat "docker rm api_test_runner"
+                script {
+                    docker.image("${IMAGE_NAME}:${TAG}").run('python world_page_test.py')
+                }
             }
         }
 
         stage('Run world test') {
             steps {
-                bat "docker run --name python world_page_test ${IMAGE_NAME}:${TAG} python python world_page_test
+                script {
+                    docker.image("${IMAGE_NAME}:${TAG}").inside {
+                        sh 'python world_page_test.py'
+                    }
+                }
+            }
+        }
+    }
+}
