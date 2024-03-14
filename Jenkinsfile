@@ -27,6 +27,7 @@ pipeline {
                         'Change Language': {
                             echo 'Running change language test...'
                             bat "docker rm -f UI_test || true"
+                            echo pwd
                             bat "docker run --name UI_test ${IMAGE_NAME}:${TAG} python world_page_test.py"
                         }
                     )
