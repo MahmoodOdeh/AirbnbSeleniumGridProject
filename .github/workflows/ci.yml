@@ -21,9 +21,18 @@ jobs:
       with:
         chrome-version: latest
 
-    - name: Print current directory path
-      run: echo Current directory path $(pwd)
+    - name: Build Docker image
+      run: docker build -t tests:latest Dockerfile_path
+
+    - name: Log in to Docker Hub (if needed)
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Push Docker image to Docker Hub (if needed)
+      run: docker push tests:latest
 
     - name: Run Selenium Test
       run: |
-        docker run --name api_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${{ github.workspace }}/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${{ github.workspace }}/logic:/usr/src/tests/AirbnbSeleniumGridProject/logic tests:latest python test/world_page_test.py
+        docker run --name api_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject \
+        -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra \
+        -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/logic:/usr/src/tests/AirbnbSeleniumGridProject/logic \
+        tests:latest python test/world_page_test.py
