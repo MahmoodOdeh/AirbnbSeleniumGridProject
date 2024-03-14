@@ -26,4 +26,4 @@ jobs:
         docker run --name api_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject \
         -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra \
         -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/logic:/usr/src/tests/AirbnbSeleniumGridProject/logic \
-        tests:latest python test/world_page_test.py
+        python test/world_page_test.py
