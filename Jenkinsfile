@@ -16,22 +16,28 @@ pipeline {
             }
         }
 
-        stage('Run API Test') {
+        stage('Run Tests in Parallel') {
             steps {
                 script {
-                    docker.image("${IMAGE_NAME}:${TAG}").run('python world_page_test.py')
+                    parallel(
+                        'API Test': {
+                            bat "docker run --name api_test_runner ${IMAGE_NAME}:${TAG} python api_test_runner.py"
+                            bat "docker rm api_test_runner"
+                        },
+                        'Add Food to Meal Test': {
+                            bat "docker run --name performance_test ${IMAGE_NAME}:${TAG} python performance_test.py"
+                            bat "docker rm performance_test"
+                        }
+                    )
                 }
             }
         }
+    }
 
-        stage('Run world test') {
-            steps {
-                script {
-                    docker.image("${IMAGE_NAME}:${TAG}").inside {
-                        sh 'python world_page_test.py'
-                    }
-                }
-            }
+    post {
+        always {
+            echo 'Cleaning up...'
+            bat "docker rmi ${IMAGE_NAME}:${TAG}"
         }
     }
 }
