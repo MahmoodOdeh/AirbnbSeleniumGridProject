@@ -21,7 +21,7 @@ pipeline {
                         'API Test': {
                             echo 'Running API test...'
                             bat "docker rm -f api_test || true"
-                            bat "docker run --name khayo ${IMAGE_NAME}:${TAG} python C:\Users\odehm\Desktop\new\AirbnbSeleniumGridProject\tankerkoenig_stats_api_test.py"
+                            bat "docker run --name khayo ${IMAGE_NAME}:${TAG} python AirbnbSeleniumGridProject\\tankerkoenig_stats_api_test.py"
                         },
                         'Change Language': {
                             echo 'Running change language test...'
