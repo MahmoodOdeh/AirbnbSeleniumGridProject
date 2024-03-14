@@ -6,7 +6,6 @@ from infra.browser_wrapper import BrowserWrapper
 from logic.airbnb_base_age import AirbnbBasePage
 
 
-
 class AirbnbPageTest(unittest.TestCase):
     def setUp(self):
         self.browser = BrowserWrapper()
