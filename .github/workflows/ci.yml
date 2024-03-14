@@ -7,9 +7,9 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.x'
 
     - name: Install dependencies
       run: |
@@ -20,6 +20,10 @@ jobs:
       uses: browser-actions/setup-chrome@v1
       with:
         chrome-version: latest
+
+    - name: Install Selenium
+      run: |
+        pip install selenium
 
     - name: Run Selenium Test
       run: |
