@@ -38,3 +38,4 @@ jobs:
           -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/logic:/usr/src/tests/AirbnbSeleniumGridProject/logic \
           -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/test:/usr/src/tests/AirbnbSeleniumGridProject/test \
           tests python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
+          tests python /usr/src/tests/AirbnbSeleniumGridProject/test/tankerkoenig_stats_api_test.py
