@@ -1,9 +1,6 @@
 import unittest
 from concurrent.futures.thread import ThreadPoolExecutor
-import sys
 
-sys.path.append('AirbnbSeleniumGridProject\\\\infra')
-sys.path.append('AirbnbSeleniumGridProject\\\\logic')
 
 from infra.api_wrapper import APIWrapper
 from infra.browser_wrapper import BrowserWrapper
