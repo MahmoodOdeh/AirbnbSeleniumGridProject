@@ -23,8 +23,8 @@ jobs:
           CHROME_DRIVER_VERSION="92.0.4515.107"
           wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
           unzip /tmp/chromedriver.zip -d /tmp
-          sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
-          sudo chmod +x /usr/local/bin/chromedriver
+          docker build -t tests:latest .
+
         shell: bash
 
       - name: Install Selenium
