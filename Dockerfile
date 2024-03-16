@@ -22,5 +22,5 @@ RUN apt-get update && apt-get install -y \
 
 
 
-#docker run --name aya -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v C:/Users/odehm/Desktop/new/AirbnbSeleniumGridProject/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra tests:latest python test/tankerkoenig_stats_api_test.py
+docker run --name aya -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v C:/Users/odehm/Desktop/new/AirbnbSeleniumGridProject/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra tests:latest python test/tankerkoenig_stats_api_test.py
 
