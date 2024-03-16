@@ -28,6 +28,23 @@ jobs:
           unzip /tmp/chromedriver.zip -d /tmp
           docker build -t tests:latest .
 
+      - name: Setup EdgeDriver
+        run: |
+          EDGE_DRIVER_VERSION="96.0.1054.43"
+          wget -q -O /tmp/msedgedriver.zip https://msedgedriver.azureedge.net/$EDGEDRIVER_VERSION/edgedriver_linux64.zip
+          unzip /tmp/msedgedriver.zip -d /tmp
+          sudo mv /tmp/msedgedriver /usr/local/bin/msedgedriver
+          sudo chmod +x /usr/local/bin/msedgedriver
+
+      - name: Setup GeckoDriver for Firefox
+        run: |
+          GECKODRIVER_VERSION="0.30.0"
+          wget -q -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz
+          tar -xzf /tmp/geckodriver.tar.gz -C /tmp
+          sudo mv /tmp/geckodriver /usr/local/bin/geckodriver
+          sudo chmod +x /usr/local/bin/geckodriver
+      
+
       - name: Install Selenium
         run: |
           pip install selenium
