@@ -4,6 +4,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      INFRA_PATH: '/home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/infra'
+      LOGIC_PATH: '/home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/logic'
     steps:
       - uses: actions/checkout@v4
 
@@ -25,17 +28,14 @@ jobs:
           unzip /tmp/chromedriver.zip -d /tmp
           docker build -t tests:latest .
 
-        shell: bash
-
       - name: Install Selenium
         run: |
           pip install selenium
 
-      - name: Run Selenium Test
+      - name: Run Selenium Tests
         run: |
-          docker run --name api_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject \
-          -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra \
-          -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/logic:/usr/src/tests/AirbnbSeleniumGridProject/logic \
-          -v /home/runner/work/AirbnbSeleniumGridProject/AirbnbSeleniumGridProject/test:/usr/src/tests/AirbnbSeleniumGridProject/test \
-          tests python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
-          
+          docker run --name api_test_chrome -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v $INFRA_PATH:/usr/src/tests/AirbnbSeleniumGridProject/infra -v $LOGIC_PATH:/usr/src/tests/AirbnbSeleniumGridProject/logic tests python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
+
+          docker run --name api_test_edge -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v $INFRA_PATH:/usr/src/tests/AirbnbSeleniumGridProject/infra -v $LOGIC_PATH:/usr/src/tests/AirbnbSeleniumGridProject/logic tests python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
+
+          docker run --name api_test_firefox -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v $INFRA_PATH:/usr/src/tests/AirbnbSeleniumGridProject/infra -v $LOGIC_PATH:/usr/src/tests/AirbnbSeleniumGridProject/logic tests python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
