@@ -20,23 +20,23 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add 
     microsoft-edge-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Set ChromeDriver version
+ENV CHROME_DRIVER_VERSION="92.0.4515.107"
 
 # Download and install ChromeDriver
-RUN CHROME_DRIVER_VERSION="92.0.4515.107" \
-    && wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
+RUN wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
     && unzip /tmp/chromedriver.zip -d /tmp \
     && mv /tmp/chromedriver /usr/local/bin/chromedriver \
     && chmod +x /usr/local/bin/chromedriver
 
+# Set EdgeDriver version
+ENV EDGE_DRIVER_VERSION="92.0.902.67"
+
 # Download and install EdgeDriver
-# Note: Replace the version and download URL with the correct EdgeDriver version for your environment
-RUN EDGE_DRIVER_VERSION="92.0.902.67" \
-    && wget -q -O /tmp/msedgedriver.zip https://msedgedriver.azureedge.net/$EDGE_DRIVER_VERSION/edgedriver_linux64.zip \
+RUN wget -q -O /tmp/msedgedriver.zip https://msedgedriver.azureedge.net/$EDGE_DRIVER_VERSION/edgedriver_linux64.zip \
     && unzip /tmp/msedgedriver.zip -d /tmp \
     && mv /tmp/msedgedriver /usr/local/bin/edgedriver \
     && chmod +x /usr/local/bin/edgedriver
-
-
 
 WORKDIR /usr/src/tests
 
