@@ -29,14 +29,6 @@ RUN wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com
     && mv /tmp/chromedriver /usr/local/bin/chromedriver \
     && chmod +x /usr/local/bin/chromedriver
 
-# Set EdgeDriver version
-ENV EDGE_DRIVER_VERSION="92.0.902.67"
-
-# Download and install EdgeDriver
-RUN wget -q -O /tmp/msedgedriver.zip https://msedgedriver.azureedge.net/$EDGE_DRIVER_VERSION/edgedriver_linux64.zip \
-    && unzip /tmp/msedgedriver.zip -d /tmp \
-    && mv /tmp/msedgedriver /usr/local/bin/edgedriver \
-    && chmod +x /usr/local/bin/edgedriver
 
 WORKDIR /usr/src/tests
 
