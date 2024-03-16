@@ -36,9 +36,9 @@ jobs:
           sudo mv /tmp/msedgedriver /usr/local/bin/msedgedriver
           sudo chmod +x /usr/local/bin/msedgedriver
 
-      - name: Setup GeckoDriver for Firefox
+      - name: Setup FirefoxDriver
         run: |
-          GECKODRIVER_VERSION="0.30.0"
+          FIREFOX_DRIVER_VERSION="0.30.0"
           wget -q -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz
           tar -xzf /tmp/geckodriver.tar.gz -C /tmp
           sudo mv /tmp/geckodriver /usr/local/bin/geckodriver
