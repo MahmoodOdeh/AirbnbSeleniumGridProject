@@ -1,26 +1,56 @@
 FROM python:3.12
 
-
-WORKDIR /usr/src/tests
-
-COPY . .
-COPY infra C:\Users\odehm\Desktop\new\AirbnbSeleniumGridProject\infra
-COPY logic C:\Users\odehm\Desktop\new\AirbnbSeleniumGridProject\logic
-
-
-
-RUN pip install --no-cache-dir -r requirements.txt
-RUN apt-get update && apt-get install unzip
+# Install necessary packages
 RUN apt-get update && apt-get install -y \
     wget \
-    gnupg \
-    && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    unzip \
+    gnupg
+
+# Install Google Chrome
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update && apt-get install -y \
     google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Microsoft Edge (Chromium)
+RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add - \
+    && echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list \
+    && apt-get update && apt-get install -y \
+    microsoft-edge-dev \
+    && rm -rf /var/lib/apt/lists/*
 
+# Install Firefox
+RUN apt-get update && apt-get install -y \
+    firefox \
+    && rm -rf /var/lib/apt/lists/*
 
-#docker run --name aya -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v C:/Users/odehm/Desktop/new/AirbnbSeleniumGridProject/infra:/usr/src/tests/AirbnbSeleniumGridProject/infra tests:latest python test/tankerkoenig_stats_api_test.py
+# Download and install ChromeDriver
+RUN CHROME_DRIVER_VERSION="92.0.4515.107" \
+    && wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
+    && unzip /tmp/chromedriver.zip -d /tmp \
+    && mv /tmp/chromedriver /usr/local/bin/chromedriver \
+    && chmod +x /usr/local/bin/chromedriver
 
+# Download and install EdgeDriver
+# Note: Replace the version and download URL with the correct EdgeDriver version for your environment
+RUN EDGE_DRIVER_VERSION="92.0.902.67" \
+    && wget -q -O /tmp/msedgedriver.zip https://msedgedriver.azureedge.net/$EDGE_DRIVER_VERSION/edgedriver_linux64.zip \
+    && unzip /tmp/msedgedriver.zip -d /tmp \
+    && mv /tmp/msedgedriver /usr/local/bin/edgedriver \
+    && chmod +x /usr/local/bin/edgedriver
+
+# Download and install GeckoDriver for Firefox
+RUN FIREFOX_DRIVER_VERSION="0.30.0" \
+    && wget -q -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v$FIREFOX_DRIVER_VERSION/geckodriver-v$FIREFOX_DRIVER_VERSION-linux64.tar.gz \
+    && tar -xzf /tmp/geckodriver.tar.gz -C /tmp \
+    && mv /tmp/geckodriver /usr/local/bin/geckodriver \
+    && chmod +x /usr/local/bin/geckodriver
+
+WORKDIR /usr/src/tests
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["python", "--version"]
