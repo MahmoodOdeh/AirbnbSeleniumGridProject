@@ -25,8 +25,8 @@ pipeline {
                             bat "docker rm -f api_test || true"
                             bat "docker run --name api_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${INFRA_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${LOGIC_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/logic ${IMAGE_NAME}:${TAG} python test/tankerkoenig_stats_api_test.py"
                         },
-                        'Change Language': {
-                            echo 'Running change language test...'
+                        'UI Test': {
+                            echo 'Running UI test...'
                             bat "docker rm -f UI_test || true"
                             bat "docker run --name UI_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${INFRA_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${LOGIC_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py"
                         }
