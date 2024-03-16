@@ -20,15 +20,20 @@ pipeline {
             steps {
                 script {
                     parallel(
-                        'API Test': {
-                            echo 'Running API test...'
-                            bat "docker rm -f api_test || true"
-                            bat "docker run --name api_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${INFRA_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${LOGIC_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/logic ${IMAGE_NAME}:${TAG} python test/tankerkoenig_stats_api_test.py"
+                        'Chrome Test': {
+                            echo 'Running Chrome test...'
+                            bat "docker rm -f chrome_test || true"
+                            bat "docker run --name chrome_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${INFRA_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${LOGIC_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py --browser chrome"
                         },
-                        'UI Test': {
-                            echo 'Running UI test...'
-                            bat "docker rm -f UI_test || true"
-                            bat "docker run --name UI_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${INFRA_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${LOGIC_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py"
+                        'Edge Test': {
+                            echo 'Running Edge test...'
+                            bat "docker rm -f edge_test || true"
+                            bat "docker run --name edge_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${INFRA_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${LOGIC_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py --browser edge"
+                        },
+                        'Firefox Test': {
+                            echo 'Running Firefox test...'
+                            bat "docker rm -f firefox_test || true"
+                            bat "docker run --name firefox_test -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v ${INFRA_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/infra -v ${LOGIC_PATH}:/usr/src/tests/AirbnbSeleniumGridProject/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py --browser firefox"
                         }
                     )
                 }
