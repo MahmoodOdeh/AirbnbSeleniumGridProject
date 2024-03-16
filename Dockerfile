@@ -22,7 +22,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add 
 
 # Install Firefox
 RUN apt-get update && apt-get install -y \
-    firefox \
+    firefox=78.0.2+build1-0ubuntu0.20.04.2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and install ChromeDriver
