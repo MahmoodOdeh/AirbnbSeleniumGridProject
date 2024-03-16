@@ -20,10 +20,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add 
     microsoft-edge-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Firefox
-RUN apt-get update && apt-get install -y \
-    firefox \
-    && rm -rf /var/lib/apt/lists/*
 
 # Download and install ChromeDriver
 RUN CHROME_DRIVER_VERSION="92.0.4515.107" \
@@ -40,12 +36,7 @@ RUN EDGE_DRIVER_VERSION="92.0.902.67" \
     && mv /tmp/msedgedriver /usr/local/bin/edgedriver \
     && chmod +x /usr/local/bin/edgedriver
 
-# Download and install GeckoDriver for Firefox
-RUN FIREFOX_DRIVER_VERSION="0.30.0" \
-    && wget -q -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v$FIREFOX_DRIVER_VERSION/geckodriver-v$FIREFOX_DRIVER_VERSION-linux64.tar.gz \
-    && tar -xzf /tmp/geckodriver.tar.gz -C /tmp \
-    && mv /tmp/geckodriver /usr/local/bin/geckodriver \
-    && chmod +x /usr/local/bin/geckodriver
+
 
 WORKDIR /usr/src/tests
 
