@@ -34,7 +34,7 @@ jobs:
 
       - name: Run Selenium Tests
         run: |
-          docker run --name api_test_chrome -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v $INFRA_PATH:/usr/src/tests/AirbnbSeleniumGridProject/infra -v $LOGIC_PATH:/usr/src/tests/AirbnbSeleniumGridProject/logic tests python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
+          docker run --name api_test_chrome -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v $INFRA_PATH:/usr/src/tests/AirbnbSeleniumGridProject/infra -v $LOGIC_PATH:/usr/src/tests/AirbnbSeleniumGridProject/logic tests python C:\Users\odehm\Desktop\new\AirbnbSeleniumGridProject\test\world_page_test.py
 
           docker run --name api_test_edge -e PYTHONPATH=/usr/src/tests/AirbnbSeleniumGridProject -v $INFRA_PATH:/usr/src/tests/AirbnbSeleniumGridProject/infra -v $LOGIC_PATH:/usr/src/tests/AirbnbSeleniumGridProject/logic tests python /usr/src/tests/AirbnbSeleniumGridProject/test/world_page_test.py
 
